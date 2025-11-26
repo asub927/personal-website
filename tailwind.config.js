@@ -72,33 +72,52 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Lato', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        serif: ['Merriweather', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
       },
       fontSize: {
-        // Ensure minimum 16px base size for readability
-        'xs': ['0.75rem', { lineHeight: '1rem' }],      // 12px
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],  // 14px
-        'base': ['1rem', { lineHeight: '1.5rem' }],     // 16px - minimum
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],  // 18px
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],   // 20px
-        '2xl': ['1.5rem', { lineHeight: '2rem' }],      // 24px
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 30px
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],   // 36px
-        '5xl': ['3rem', { lineHeight: '1' }],           // 48px
-        '6xl': ['3.75rem', { lineHeight: '1' }],        // 60px
-        '7xl': ['4.5rem', { lineHeight: '1' }],         // 72px
+        // Modular scale (1.333 ratio) for typography
+        'xs': ['0.75rem', { lineHeight: '1.4' }],       // 12px - Caption/Meta
+        'sm': ['0.875rem', { lineHeight: '1.5' }],      // 14px - Body Small
+        'base': ['1rem', { lineHeight: '1.6' }],        // 16px - Body Regular
+        'lg': ['1.125rem', { lineHeight: '1.7' }],      // 18px - Body Large
+        'xl': ['1.5rem', { lineHeight: '1.4' }],        // 24px - H4
+        '2xl': ['2.25rem', { lineHeight: '1.3' }],      // 36px - H3
+        '3xl': ['3rem', { lineHeight: '1.2' }],         // 48px - H2
+        '4xl': ['4.5rem', { lineHeight: '1.1' }],       // 72px - H1
       },
       spacing: {
-        // Consistent spacing scale (4px base unit)
+        // Generous spacing scale (8px base unit)
         '18': '4.5rem',   // 72px
         '22': '5.5rem',   // 88px
         '26': '6.5rem',   // 104px
         '30': '7.5rem',   // 120px
+        '36': '9rem',     // 144px
+        '40': '10rem',    // 160px
       },
       lineHeight: {
-        'relaxed': '1.6',
-        'loose': '1.8',
+        'tight': '1.1',
+        'snug': '1.2',
+        'normal': '1.3',
+        'relaxed': '1.5',
+        'comfortable': '1.6',
+        'loose': '1.7',
+      },
+      letterSpacing: {
+        'tighter': '-0.03em',
+        'tight': '-0.02em',
+        'normal': '-0.01em',
+        'slight': '-0.005em',
+        'wide': '0.02em',
+        'wider': '0.1em',
+      },
+      fontWeight: {
+        'light': '300',
+        'regular': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'black': '900',
       },
     },
   },

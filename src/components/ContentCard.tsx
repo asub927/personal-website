@@ -52,7 +52,7 @@ export const ContentCard = ({ item, onClick }: ContentCardProps) => {
 
   return (
     <article
-      className="group cursor-pointer rounded-lg border border-border overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] min-h-[44px] bg-primary"
+      className="group cursor-pointer rounded-lg border border-border overflow-hidden transition-all duration-300 hover:border-border-dark hover:shadow-lg hover:scale-[1.02] min-h-[44px] bg-white"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="listitem"
@@ -83,7 +83,7 @@ export const ContentCard = ({ item, onClick }: ContentCardProps) => {
           ref={imgRef}
           src={isVisible ? item.thumbnailUrl : undefined}
           alt={item.title}
-          className={`w-full h-full object-cover transition-all duration-700 ease-out ${
+          className={`w-full h-full object-cover transition-all duration-500 ease-out grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 ${
             imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
           }`}
           onLoad={handleImageLoad}
@@ -94,19 +94,19 @@ export const ContentCard = ({ item, onClick }: ContentCardProps) => {
       </div>
 
       {/* Content */}
-      <div className="p-5 sm:p-6 md:p-7">
-        <div className="mb-2 sm:mb-3">
-          <span className="inline-block px-3 py-1.5 text-xs sm:text-sm font-medium text-accent bg-accent-50 rounded" aria-label={`Category: ${item.category}`}>
+      <div className="p-8">
+        <div className="mb-3">
+          <span className="inline-block px-3 py-1.5 text-xs font-semibold text-accent bg-accent-50 rounded uppercase tracking-wide" aria-label={`Category: ${item.category}`}>
             {item.category}
           </span>
         </div>
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-text mb-2 sm:mb-3 group-hover:text-accent transition-colors leading-tight">
+        <h3 className="font-serif text-2xl font-semibold text-navy mb-4 group-hover:text-accent transition-colors leading-snug">
           {item.title}
         </h3>
-        <p className="text-base sm:text-base md:text-lg text-text-secondary line-clamp-3 leading-relaxed">
+        <p className="font-sans text-base text-text-secondary line-clamp-3 leading-comfortable mb-4">
           {item.description}
         </p>
-        <time className="text-sm sm:text-sm md:text-base text-text-tertiary mt-3 sm:mt-4 block" dateTime={item.publishedDate}>
+        <time className="font-sans text-sm text-text-tertiary block" dateTime={item.publishedDate}>
           {new Date(item.publishedDate).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',

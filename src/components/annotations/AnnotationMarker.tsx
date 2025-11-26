@@ -121,7 +121,7 @@ export const AnnotationMarker = ({
           </div>
         </div>
       ) : (
-        /* Desktop: Square button with sidebar panel - McKinsey style */}
+        /* Desktop: Square button with sidebar panel - McKinsey style */
         <>
           {/* Marker Button - Professional square design */}
           <button

@@ -29,27 +29,28 @@ const Navigation = ({ currentPath }: NavigationProps) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex justify-between items-center h-20 md:h-24">
-          {/* Logo/Brand - McKinsey style */}
+        <div className="flex justify-between items-center h-24 md:h-[96px]">
+          {/* Logo/Brand - McKinsey style with Playfair Display */}
           <Link 
             to="/" 
-            className="text-2xl sm:text-2xl md:text-3xl font-black text-navy tracking-tight hover:text-accent transition-all duration-300 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2"
+            className="font-serif text-[28px] md:text-[32px] font-black text-navy tracking-tight hover:text-accent transition-all duration-300 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2"
             aria-label="Portfolio home"
           >
             PORTFOLIO
           </Link>
 
-          {/* Desktop Navigation - Clean, minimal */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2" role="navigation">
+          {/* Desktop Navigation - Clean, minimal with Inter font */}
+          <div className="hidden md:flex items-center space-x-2" role="navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm lg:text-base font-semibold uppercase tracking-wider transition-all duration-300 min-h-[44px] flex items-center px-4 lg:px-5 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+                className={`font-sans text-sm font-semibold uppercase tracking-wider transition-all duration-300 min-h-[44px] flex items-center px-4 py-3 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
                   isActive(link.path)
                     ? 'text-white bg-navy shadow-md'
                     : 'text-navy hover:text-accent hover:bg-navy-50'
                 }`}
+                style={{ letterSpacing: '0.1em' }}
                 aria-current={isActive(link.path) ? 'page' : undefined}
               >
                 {link.label}

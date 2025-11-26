@@ -89,7 +89,7 @@ export const AnnotationSidebar = ({
       className={`annotation-sidebar ${
         isMobile
           ? 'static w-full'
-          : 'sticky top-20 w-full md:w-[250px] lg:w-[300px] xl:w-[350px] h-fit'
+          : 'sticky top-32 w-full md:w-[250px] lg:w-[300px] xl:w-[350px] h-fit max-h-[calc(100vh-140px)] overflow-y-auto'
       }`}
       aria-label="Article annotations"
     >

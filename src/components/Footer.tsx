@@ -43,22 +43,20 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
 
   return (
     <footer className="bg-navy text-white" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 md:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-14 md:gap-16">
-          {/* Brand/About Column */}
-          <div>
-            <h3 className="text-2xl sm:text-2xl font-black text-white mb-5 tracking-tight">PORTFOLIO</h3>
-            <p className="text-base sm:text-base md:text-lg text-navy-100 leading-relaxed font-light">
-              A personal portfolio showcasing work, writing, and creative projects with professional excellence.
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-16">
+        {/* Single row layout - minimalistic */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+          {/* Brand */}
+          <div className="text-center md:text-left">
+            <h3 className="font-serif text-2xl font-black text-white mb-2 tracking-tight">PORTFOLIO</h3>
+            <p className="font-sans text-sm text-navy-100 font-light">
+              © {currentYear} All rights reserved.
             </p>
           </div>
 
-          {/* Navigation Links Column */}
-          <nav aria-label="Footer navigation">
-            <h3 className="text-sm sm:text-sm md:text-base font-bold text-accent uppercase tracking-widest mb-5">
-              Navigation
-            </h3>
-            <ul className="space-y-3 sm:space-y-4">
+          {/* Navigation Links - Horizontal */}
+          <nav aria-label="Footer navigation" className="flex-1">
+            <ul className="flex flex-wrap justify-center md:justify-center gap-6 md:gap-8">
               {navigationLinks.map((link) => (
                 <li key={link.path}>
                   {link.external ? (
@@ -66,14 +64,14 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
                       href={link.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-base sm:text-base md:text-lg text-white hover:text-accent transition-all duration-300 inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm px-2 font-light"
+                      className="font-sans text-sm text-white hover:text-accent transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm px-2 py-1 font-light"
                     >
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       to={link.path}
-                      className="text-base sm:text-base md:text-lg text-white hover:text-accent transition-all duration-300 inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm px-2 font-light"
+                      className="font-sans text-sm text-white hover:text-accent transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm px-2 py-1 font-light"
                     >
                       {link.label}
                     </Link>
@@ -83,19 +81,16 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
             </ul>
           </nav>
 
-          {/* Social Media Column */}
+          {/* Social Media - Compact */}
           <nav aria-label="Social media links">
-            <h3 className="text-sm sm:text-sm md:text-base font-bold text-accent uppercase tracking-widest mb-5">
-              Connect
-            </h3>
-            <div className="flex flex-wrap gap-4 sm:gap-5" role="list">
+            <div className="flex gap-3" role="list">
               {socialLinks.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-accent hover:bg-navy-light transition-all duration-300 p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-sm border border-navy-light hover:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy"
+                  className="text-white hover:text-accent transition-all duration-300 p-2 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm"
                   aria-label={`Visit ${social.platform} profile (opens in new tab)`}
                 >
                   {getSocialIcon(social.platform)}
@@ -103,18 +98,6 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
               ))}
             </div>
           </nav>
-        </div>
-
-        {/* Copyright - Elegant divider */}
-        <div className="mt-16 sm:mt-20 md:mt-24 pt-8 sm:pt-10 border-t border-navy-light">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm sm:text-base text-navy-100 font-light">
-              © {currentYear} Portfolio. All rights reserved.
-            </p>
-            <p className="text-sm text-navy-100 font-light">
-              Designed with <span className="text-accent">excellence</span> in mind
-            </p>
-          </div>
         </div>
       </div>
     </footer>

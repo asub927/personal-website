@@ -196,7 +196,7 @@ const ArticleDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-8 md:py-12 lg:py-16">
+    <div className="min-h-screen bg-white pt-32 md:pt-36 lg:pt-40 pb-8 md:pb-12 lg:pb-16">
       <ArticleWithAnnotations article={article} annotations={annotations} />
     </div>
   );
