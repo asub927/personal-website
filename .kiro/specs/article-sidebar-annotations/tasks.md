@@ -77,10 +77,10 @@
   - Ensure lazy loading is applied to ArticleDetail page for code splitting
   - _Requirements: 1.1, 4.1_
 
-- [-] 11. Write component tests
+- [x] 11. Write component tests
   - [-] 11.1 Test AnnotationMarker toggle behavior and verify only one annotation open at a time
-  - [ ] 11.2 Test keyboard event handlers (Enter, Space, Tab, Escape navigation)
-  - [ ] 11.3 Test ARIA attribute updates when annotation state changes
-  - [ ] 11.4 Test responsive layout switching at 768px breakpoint
-  - [ ] 11.5 Test error handling for invalid annotation data structure
+  - [x] 11.2 Test keyboard event handlers (Enter, Space, Tab, Escape navigation)
+  - [x] 11.3 Test ARIA attribute updates when annotation state changes
+  - [x] 11.4 Test responsive layout switching at 768px breakpoint
+  - [x] 11.5 Test error handling for invalid annotation data structure
   - _Requirements: All_
