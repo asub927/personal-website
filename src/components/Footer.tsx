@@ -42,23 +42,23 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-primary-100 border-t border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {/* Brand/About Column */}
           <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Portfolio</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="text-lg sm:text-xl font-bold text-text mb-3 sm:mb-4">Portfolio</h3>
+            <p className="text-base sm:text-base md:text-lg text-text-secondary leading-relaxed">
               A personal portfolio showcasing work, writing, and creative projects.
             </p>
           </div>
 
           {/* Navigation Links Column */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+            <h3 className="text-base sm:text-base md:text-lg font-semibold text-text uppercase tracking-wider mb-3 sm:mb-4">
               Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 sm:space-y-3">
               {navigationLinks.map((link) => (
                 <li key={link.path}>
                   {link.external ? (
@@ -66,14 +66,14 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
                       href={link.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center"
                     >
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       to={link.path}
-                      className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center"
                     >
                       {link.label}
                     </Link>
@@ -85,17 +85,17 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
 
           {/* Social Media Column */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+            <h3 className="text-base sm:text-base md:text-lg font-semibold text-text uppercase tracking-wider mb-3 sm:mb-4">
               Connect
             </h3>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-text-secondary hover:text-text transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md hover:bg-primary-50"
                   aria-label={`Visit ${social.platform} profile`}
                 >
                   {getSocialIcon(social.platform)}
@@ -106,8 +106,8 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-sm text-gray-600 text-center">
+        <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-border">
+          <p className="text-base sm:text-base md:text-lg text-text-secondary text-center">
             © {currentYear} Portfolio. All rights reserved.
           </p>
         </div>

@@ -37,12 +37,12 @@ export const Newsletter: React.FC<NewsletterProps> = ({ onSubmit }) => {
   };
 
   return (
-    <section className="w-full py-16 px-4 bg-gray-50">
+    <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-primary-100">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-text mb-3 sm:mb-4 md:mb-6">
           Subscribe to Updates
         </h2>
-        <p className="text-lg text-gray-600 mb-8">
+        <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 sm:mb-8">
           Get the latest articles and insights delivered to your inbox.
         </p>
 
@@ -52,11 +52,11 @@ export const Newsletter: React.FC<NewsletterProps> = ({ onSubmit }) => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 py-3 rounded-lg border text-base ${
                   errors.email
-                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-                } focus:outline-none focus:ring-2 transition-colors`}
+                    ? 'border-error focus:ring-error focus:border-error'
+                    : 'border-border focus:ring-accent focus:border-accent'
+                } focus:outline-none focus:ring-2 transition-colors min-h-[44px] bg-primary`}
                 {...register('email', {
                   required: 'Email address is required',
                   validate: (value) => isValidEmail(value) || getEmailErrorMessage(value),
@@ -64,14 +64,14 @@ export const Newsletter: React.FC<NewsletterProps> = ({ onSubmit }) => {
                 disabled={isLoading}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-2 text-left">{errors.email.message}</p>
+                <p className="text-error text-sm sm:text-base mt-2 text-left">{errors.email.message}</p>
               )}
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-base min-h-[44px] min-w-[120px]"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center">
@@ -104,16 +104,16 @@ export const Newsletter: React.FC<NewsletterProps> = ({ onSubmit }) => {
           </div>
 
           {submitStatus === 'success' && (
-            <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800 text-sm">
+            <div className="mt-4 p-4 bg-success-light border border-success rounded-lg">
+              <p className="text-success-dark text-sm sm:text-base">
                 ✓ Successfully subscribed! Check your email for confirmation.
               </p>
             </div>
           )}
 
           {submitStatus === 'error' && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-800 text-sm">
+            <div className="mt-4 p-4 bg-error-light border border-error rounded-lg">
+              <p className="text-error-dark text-sm sm:text-base">
                 ✗ {errorMessage || 'Something went wrong. Please try again.'}
               </p>
             </div>
