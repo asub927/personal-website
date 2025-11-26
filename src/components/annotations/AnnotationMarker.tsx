@@ -6,7 +6,6 @@ export const AnnotationMarker = ({
   annotation,
   isActive,
   onToggle,
-  position,
   isMobile = false,
 }: AnnotationMarkerProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -33,15 +32,11 @@ export const AnnotationMarker = ({
   }, [isActive]);
 
   return (
-    <div
-      className={`annotation-marker ${
-        isMobile ? 'static w-full' : 'absolute left-0 w-full'
-      }`}
-      style={isMobile ? {} : { top: `${position}px` }}
-    >
-      {/* Mobile: Full-width card with title preview */}
+    <div className="annotation-marker w-full">
+      {/* McKinsey-style expandable box */}
       {isMobile ? (
-        <div className="border-l-4 border-accent bg-white shadow-sm hover:shadow-md transition-all duration-300">
+        <div className="mb-4">
+          {/* Collapsed/Expanded Header - Light gray box */}
           <button
             ref={buttonRef}
             onClick={onToggle}
@@ -49,67 +44,59 @@ export const AnnotationMarker = ({
             aria-expanded={isActive}
             aria-controls={`annotation-panel-${annotation.id}`}
             aria-label={`${isActive ? 'Collapse' : 'Expand'} annotation${annotation.title ? `: ${annotation.title}` : ''}`}
-            className={`
-              w-full
-              flex items-center justify-between
-              min-h-[44px]
-              px-5 py-4
-              text-left
-              transition-all duration-300 ease-in-out
-              hover:bg-navy-50
-              focus:outline-none focus:ring-2 focus:ring-accent focus:ring-inset
-              ${isActive ? 'bg-navy-50' : 'bg-white'}
-            `}
+            className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2"
           >
-            <div className="flex-1 pr-4">
+            <div className="flex-1 text-left pr-4">
+              <span className="font-sans text-sm font-semibold text-navy">
+                {annotation.metadata?.type && (
+                  <span className="text-xs uppercase tracking-wider text-text-tertiary mr-2">
+                    {annotation.metadata.type}
+                  </span>
+                )}
+              </span>
               {annotation.title && (
-                <span className="font-bold text-sm sm:text-base text-navy block tracking-tight">
+                <h3 className="font-serif text-base font-semibold text-navy mt-1">
                   {annotation.title}
-                </span>
+                </h3>
               )}
               {!annotation.title && (
-                <span className="text-sm sm:text-base text-text-secondary font-medium">
+                <span className="font-serif text-base text-navy">
                   Additional information
                 </span>
               )}
-              {annotation.metadata?.type && (
-                <span className="text-xs text-accent mt-1.5 block uppercase tracking-wider font-semibold">
-                  {annotation.metadata.type}
-                </span>
-              )}
             </div>
+            
+            {/* Circular +/- button */}
             <div
               className={`
                 flex items-center justify-center
-                min-w-[44px] min-h-[44px]
-                w-11 h-11
-                rounded-sm
-                border-2 border-accent
-                text-accent
-                font-black text-xl
-                transition-all duration-300 ease-in-out
-                ${isActive ? 'bg-accent text-white shadow-md' : 'bg-white hover:bg-accent hover:text-white'}
+                w-10 h-10
+                rounded-full
+                transition-all duration-200
+                ${isActive 
+                  ? 'bg-navy text-white' 
+                  : 'bg-white text-navy border-2 border-navy'
+                }
               `}
             >
-              <span className="leading-none" aria-hidden="true">
+              <span className="text-xl font-light leading-none" aria-hidden="true">
                 {isActive ? '−' : '+'}
               </span>
             </div>
           </button>
 
-          {/* Expandable Panel for Mobile */}
+          {/* Expandable Content */}
           <div
             id={`annotation-panel-${annotation.id}`}
             role="region"
             aria-labelledby={annotation.title ? `annotation-title-${annotation.id}` : undefined}
             className={`
-              annotation-panel-container
               transition-all duration-300 ease-in-out
-              ${isActive ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}
+              ${isActive ? 'max-h-[800px] opacity-100 mt-0' : 'max-h-0 opacity-0'}
               overflow-hidden
             `}
           >
-            <div className="px-5 pb-5">
+            <div className="px-6 py-4 bg-white border-l-4 border-navy">
               <AnnotationPanel
                 title={annotation.title}
                 content={annotation.content}
@@ -121,9 +108,9 @@ export const AnnotationMarker = ({
           </div>
         </div>
       ) : (
-        /* Desktop: Square button with sidebar panel - McKinsey style */
-        <>
-          {/* Marker Button - Professional square design */}
+        /* Desktop: McKinsey-style expandable box in sidebar */
+        <div className="mb-4">
+          {/* Collapsed/Expanded Header - Light gray box */}
           <button
             ref={buttonRef}
             onClick={onToggle}
@@ -131,49 +118,67 @@ export const AnnotationMarker = ({
             aria-expanded={isActive}
             aria-controls={`annotation-panel-${annotation.id}`}
             aria-label={`${isActive ? 'Collapse' : 'Expand'} annotation${annotation.title ? `: ${annotation.title}` : ''}`}
-            className={`
-              marker-button
-              flex items-center justify-center
-              min-w-[44px] min-h-[44px]
-              w-12 h-12
-              rounded-sm
-              border-2 border-accent
-              bg-white
-              text-accent
-              font-black text-xl
-              transition-all duration-300 ease-in-out
-              hover:bg-accent hover:text-white hover:shadow-md
-              focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
-              focus-visible:ring-4 focus-visible:ring-accent focus-visible:ring-opacity-50
-              ${isActive ? 'bg-accent text-white shadow-md' : ''}
-            `}
+            className="w-full flex items-center justify-between px-4 py-3 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2"
           >
-            <span className="leading-none" aria-hidden="true">
-              {isActive ? '−' : '+'}
-            </span>
+            <div className="flex-1 text-left pr-3">
+              {annotation.metadata?.type && (
+                <span className="text-xs uppercase tracking-wider text-text-tertiary font-sans font-semibold block mb-1">
+                  {annotation.metadata.type}
+                </span>
+              )}
+              {annotation.title && (
+                <h3 className="font-serif text-sm font-semibold text-navy leading-snug">
+                  {annotation.title}
+                </h3>
+              )}
+              {!annotation.title && (
+                <span className="font-serif text-sm text-navy">
+                  Additional information
+                </span>
+              )}
+            </div>
+            
+            {/* Circular +/- button */}
+            <div
+              className={`
+                flex items-center justify-center
+                w-8 h-8
+                rounded-full
+                flex-shrink-0
+                transition-all duration-200
+                ${isActive 
+                  ? 'bg-navy text-white' 
+                  : 'bg-white text-navy border-2 border-navy'
+                }
+              `}
+            >
+              <span className="text-lg font-light leading-none" aria-hidden="true">
+                {isActive ? '−' : '+'}
+              </span>
+            </div>
           </button>
 
-          {/* Expandable Panel */}
+          {/* Expandable Content */}
           <div
             id={`annotation-panel-${annotation.id}`}
             role="region"
             aria-labelledby={annotation.title ? `annotation-title-${annotation.id}` : undefined}
             className={`
-              annotation-panel-container
-              mt-3
               transition-all duration-300 ease-in-out
-              ${isActive ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}
+              ${isActive ? 'max-h-[600px] opacity-100 mt-0' : 'max-h-0 opacity-0'}
               overflow-hidden
             `}
           >
-            <AnnotationPanel
-              title={annotation.title}
-              content={annotation.content}
-              metadata={annotation.metadata}
-              annotationId={annotation.id}
-            />
+            <div className="px-4 py-3 bg-white border-l-4 border-navy">
+              <AnnotationPanel
+                title={annotation.title}
+                content={annotation.content}
+                metadata={annotation.metadata}
+                annotationId={annotation.id}
+              />
+            </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

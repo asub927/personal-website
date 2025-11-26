@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
+import { ScrollToTop } from './components/ScrollToTop'
 
 // Lazy load page components for code splitting
 const Home = lazy(() => import('./pages/Home'))
@@ -30,6 +31,9 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Scroll to top on route change */}
+      <ScrollToTop />
+      
       {/* Skip to main content link for keyboard navigation */}
       <a
         href="#main-content"

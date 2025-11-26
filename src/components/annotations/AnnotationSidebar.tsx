@@ -103,7 +103,7 @@ export const AnnotationSidebar = ({
         {announcement}
       </div>
 
-      <div className={isMobile ? 'space-y-4' : 'relative'}>
+      <div className={isMobile ? 'space-y-4' : 'space-y-0'}>
         {validAnnotations.map((annotation) => (
           <AnnotationMarker
             key={annotation.id}
