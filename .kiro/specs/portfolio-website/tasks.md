@@ -127,8 +127,8 @@
   - Verify production build size and load times
   - _Requirements: 3.5_
 
-- [-] 12. Enhance accessibility
-- [-] 12.1 Add semantic HTML and ARIA labels
+- [x] 12. Enhance accessibility
+- [x] 12.1 Add semantic HTML and ARIA labels
   - Use semantic elements (nav, main, footer, article)
   - Add ARIA labels to interactive elements
   - Implement keyboard navigation support

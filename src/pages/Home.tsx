@@ -94,7 +94,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <main className="scroll-smooth">
+    <>
       {/* Hero Section */}
       <Hero
         headline="Welcome to My Portfolio"
@@ -107,21 +107,21 @@ const Home: React.FC = () => {
       <Newsletter onSubmit={handleNewsletterSubmit} />
 
       {/* Content Grid Section */}
-      <section id="content" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-primary">
+      <section id="content" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-primary" aria-label="Featured work and writing">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <header className="text-center mb-10 sm:mb-12 md:mb-16">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-text mb-3 sm:mb-4 md:mb-6">
               Featured Work & Writing
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
               A collection of my latest projects, articles, and creative endeavors.
             </p>
-          </div>
+          </header>
           
           <ContentGrid items={content} isLoading={isLoadingContent} />
         </div>
       </section>
-    </main>
+    </>
   );
 };
 

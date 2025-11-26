@@ -2,9 +2,9 @@ import React from 'react';
 
 const Contact: React.FC = () => {
   return (
-    <main className="min-h-screen pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8 bg-primary">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text mb-4 sm:mb-6 md:mb-8">
+    <main className="min-h-screen pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8 bg-primary" aria-labelledby="contact-heading">
+      <article className="max-w-4xl mx-auto">
+        <h1 id="contact-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text mb-4 sm:mb-6 md:mb-8">
           Get In Touch
         </h1>
         
@@ -13,34 +13,34 @@ const Contact: React.FC = () => {
         </p>
         
         <div className="space-y-6 sm:space-y-8 md:space-y-10">
-          <div className="bg-primary-100 rounded-lg p-6 sm:p-8 md:p-10 border border-border">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-text mb-3 sm:mb-4 md:mb-5">
+          <section className="bg-primary-100 rounded-lg p-6 sm:p-8 md:p-10 border border-border" aria-labelledby="contact-info">
+            <h2 id="contact-info" className="text-lg sm:text-xl md:text-2xl font-semibold text-text mb-3 sm:mb-4 md:mb-5">
               Contact Information
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-5 sm:mb-6 md:mb-8">
               This is a placeholder for your contact page. You can add your preferred contact methods here.
             </p>
             
-            <div className="space-y-5 sm:space-y-6 md:space-y-7 text-base sm:text-lg md:text-xl text-text-secondary">
+            <dl className="space-y-5 sm:space-y-6 md:space-y-7 text-base sm:text-lg md:text-xl text-text-secondary">
               <div>
-                <h3 className="font-semibold text-text mb-2 text-base sm:text-lg">Email</h3>
-                <p className="text-text-secondary">your.email@example.com</p>
+                <dt className="font-semibold text-text mb-2 text-base sm:text-lg">Email</dt>
+                <dd className="text-text-secondary">your.email@example.com</dd>
               </div>
               
               <div>
-                <h3 className="font-semibold text-text mb-2 text-base sm:text-lg">Social Media</h3>
-                <p className="text-text-secondary">Connect with me on LinkedIn, Twitter, or GitHub</p>
+                <dt className="font-semibold text-text mb-2 text-base sm:text-lg">Social Media</dt>
+                <dd className="text-text-secondary">Connect with me on LinkedIn, Twitter, or GitHub</dd>
               </div>
               
               <div>
-                <h3 className="font-semibold text-text mb-2 text-base sm:text-lg">Location</h3>
-                <p className="text-text-secondary">Your City, Country</p>
+                <dt className="font-semibold text-text mb-2 text-base sm:text-lg">Location</dt>
+                <dd className="text-text-secondary">Your City, Country</dd>
               </div>
-            </div>
-          </div>
+            </dl>
+          </section>
           
-          <div className="bg-primary-100 rounded-lg p-6 sm:p-8 md:p-10 border border-border">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-text mb-3 sm:mb-4 md:mb-5">
+          <section className="bg-primary-100 rounded-lg p-6 sm:p-8 md:p-10 border border-border" aria-labelledby="contact-form-section">
+            <h2 id="contact-form-section" className="text-lg sm:text-xl md:text-2xl font-semibold text-text mb-3 sm:mb-4 md:mb-5">
               Contact Form
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-text-secondary">
@@ -48,16 +48,16 @@ const Contact: React.FC = () => {
               from your website. Consider integrating with a service like Formspree or building 
               a custom backend endpoint.
             </p>
-          </div>
+          </section>
           
-          <div className="bg-accent-50 border border-accent-100 rounded-lg p-5 sm:p-6 md:p-8">
+          <aside className="bg-accent-50 border border-accent-100 rounded-lg p-5 sm:p-6 md:p-8" role="note" aria-label="Page status note">
             <p className="text-base sm:text-base md:text-lg text-accent-700">
               <strong>Note:</strong> This is a placeholder page. Replace this content with your 
               actual contact information and preferred communication methods.
             </p>
-          </div>
+          </aside>
         </div>
-      </div>
+      </article>
     </main>
   );
 };
