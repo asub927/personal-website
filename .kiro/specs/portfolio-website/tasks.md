@@ -18,7 +18,7 @@
   - Add error message generation for invalid email formats
   - _Requirements: 2.2, 2.3_
 
-- [-] 3. Build core layout components
+- [x] 3. Build core layout components
 - [x] 3.1 Create Navigation component with responsive menu
   - Implement Navigation.tsx with fixed/sticky positioning
   - Add desktop horizontal menu and mobile hamburger menu toggle
@@ -26,23 +26,23 @@
   - Style with Tailwind including backdrop blur effect
   - _Requirements: 1.2, 4.1, 4.2, 4.3_
 
-- [-] 3.2 Create Footer component with links and social media
+- [x] 3.2 Create Footer component with links and social media
   - Implement Footer.tsx with multi-column layout
   - Add social media icon links that open in new tabs
   - Include navigation links and copyright information
   - Style with Tailwind for responsive layout
   - _Requirements: 4.4, 4.5_
 
-- [ ] 4. Implement Hero section
-- [ ] 4.1 Create Hero component with headline and CTA
+- [x] 4. Implement Hero section
+- [x] 4.1 Create Hero component with headline and CTA
   - Implement Hero.tsx with centered layout and full viewport height
   - Add props for headline, subheadline, CTA text and link
   - Style with large typography (responsive font sizes)
   - Add smooth scroll reveal animation
   - _Requirements: 1.1, 1.5_
 
-- [ ] 5. Build Newsletter subscription feature
-- [ ] 5.1 Create Newsletter component with form validation
+- [x] 5. Build Newsletter subscription feature
+- [-] 5.1 Create Newsletter component with form validation
   - Implement Newsletter.tsx using React Hook Form
   - Add email input field with real-time validation
   - Implement submit handler with loading state
