@@ -42,23 +42,23 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
   };
 
   return (
-    <footer className="bg-primary-100 border-t border-border" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+    <footer className="bg-navy text-white" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 md:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-14 md:gap-16">
           {/* Brand/About Column */}
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-text mb-3 sm:mb-4">Portfolio</h3>
-            <p className="text-base sm:text-base md:text-lg text-text-secondary leading-relaxed">
-              A personal portfolio showcasing work, writing, and creative projects.
+            <h3 className="text-2xl sm:text-2xl font-black text-white mb-5 tracking-tight">PORTFOLIO</h3>
+            <p className="text-base sm:text-base md:text-lg text-navy-100 leading-relaxed font-light">
+              A personal portfolio showcasing work, writing, and creative projects with professional excellence.
             </p>
           </div>
 
           {/* Navigation Links Column */}
           <nav aria-label="Footer navigation">
-            <h3 className="text-base sm:text-base md:text-lg font-semibold text-text uppercase tracking-wider mb-3 sm:mb-4">
+            <h3 className="text-sm sm:text-sm md:text-base font-bold text-accent uppercase tracking-widest mb-5">
               Navigation
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-3 sm:space-y-4">
               {navigationLinks.map((link) => (
                 <li key={link.path}>
                   {link.external ? (
@@ -66,14 +66,14 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
                       href={link.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-md px-2"
+                      className="text-base sm:text-base md:text-lg text-white hover:text-accent transition-all duration-300 inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm px-2 font-light"
                     >
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       to={link.path}
-                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-md px-2"
+                      className="text-base sm:text-base md:text-lg text-white hover:text-accent transition-all duration-300 inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy rounded-sm px-2 font-light"
                     >
                       {link.label}
                     </Link>
@@ -85,17 +85,17 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
 
           {/* Social Media Column */}
           <nav aria-label="Social media links">
-            <h3 className="text-base sm:text-base md:text-lg font-semibold text-text uppercase tracking-wider mb-3 sm:mb-4">
+            <h3 className="text-sm sm:text-sm md:text-base font-bold text-accent uppercase tracking-widest mb-5">
               Connect
             </h3>
-            <div className="flex flex-wrap gap-3 sm:gap-4" role="list">
+            <div className="flex flex-wrap gap-4 sm:gap-5" role="list">
               {socialLinks.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-text-secondary hover:text-text transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  className="text-white hover:text-accent hover:bg-navy-light transition-all duration-300 p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-sm border border-navy-light hover:border-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-navy"
                   aria-label={`Visit ${social.platform} profile (opens in new tab)`}
                 >
                   {getSocialIcon(social.platform)}
@@ -105,11 +105,16 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
           </nav>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-border">
-          <p className="text-base sm:text-base md:text-lg text-text-secondary text-center">
-            © {currentYear} Portfolio. All rights reserved.
-          </p>
+        {/* Copyright - Elegant divider */}
+        <div className="mt-16 sm:mt-20 md:mt-24 pt-8 sm:pt-10 border-t border-navy-light">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm sm:text-base text-navy-100 font-light">
+              © {currentYear} Portfolio. All rights reserved.
+            </p>
+            <p className="text-sm text-navy-100 font-light">
+              Designed with <span className="text-accent">excellence</span> in mind
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -41,7 +41,7 @@ export const AnnotationMarker = ({
     >
       {/* Mobile: Full-width card with title preview */}
       {isMobile ? (
-        <div className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+        <div className="border-l-4 border-accent bg-white shadow-sm hover:shadow-md transition-all duration-300">
           <button
             ref={buttonRef}
             onClick={onToggle}
@@ -53,27 +53,27 @@ export const AnnotationMarker = ({
               w-full
               flex items-center justify-between
               min-h-[44px]
-              px-4 py-3
+              px-5 py-4
               text-left
-              transition-all duration-200 ease-in-out
-              hover:bg-gray-50
+              transition-all duration-300 ease-in-out
+              hover:bg-navy-50
               focus:outline-none focus:ring-2 focus:ring-accent focus:ring-inset
-              ${isActive ? 'bg-gray-50' : 'bg-white'}
+              ${isActive ? 'bg-navy-50' : 'bg-white'}
             `}
           >
-            <div className="flex-1 pr-3">
+            <div className="flex-1 pr-4">
               {annotation.title && (
-                <span className="font-semibold text-sm sm:text-base text-gray-900 block">
+                <span className="font-bold text-sm sm:text-base text-navy block tracking-tight">
                   {annotation.title}
                 </span>
               )}
               {!annotation.title && (
-                <span className="text-sm sm:text-base text-gray-700">
+                <span className="text-sm sm:text-base text-text-secondary font-medium">
                   Additional information
                 </span>
               )}
               {annotation.metadata?.type && (
-                <span className="text-xs text-gray-500 mt-1 block capitalize">
+                <span className="text-xs text-accent mt-1.5 block uppercase tracking-wider font-semibold">
                   {annotation.metadata.type}
                 </span>
               )}
@@ -82,13 +82,13 @@ export const AnnotationMarker = ({
               className={`
                 flex items-center justify-center
                 min-w-[44px] min-h-[44px]
-                w-10 h-10
-                rounded-full
+                w-11 h-11
+                rounded-sm
                 border-2 border-accent
                 text-accent
-                font-bold text-lg
-                transition-all duration-200 ease-in-out
-                ${isActive ? 'bg-accent text-white' : 'bg-white'}
+                font-black text-xl
+                transition-all duration-300 ease-in-out
+                ${isActive ? 'bg-accent text-white shadow-md' : 'bg-white hover:bg-accent hover:text-white'}
               `}
             >
               <span className="leading-none" aria-hidden="true">
@@ -109,7 +109,7 @@ export const AnnotationMarker = ({
               overflow-hidden
             `}
           >
-            <div className="px-4 pb-4">
+            <div className="px-5 pb-5">
               <AnnotationPanel
                 title={annotation.title}
                 content={annotation.content}
@@ -121,9 +121,9 @@ export const AnnotationMarker = ({
           </div>
         </div>
       ) : (
-        /* Desktop: Circular button with sidebar panel */
+        /* Desktop: Square button with sidebar panel - McKinsey style */}
         <>
-          {/* Marker Button - Minimum 44x44px touch target */}
+          {/* Marker Button - Professional square design */}
           <button
             ref={buttonRef}
             onClick={onToggle}
@@ -135,17 +135,17 @@ export const AnnotationMarker = ({
               marker-button
               flex items-center justify-center
               min-w-[44px] min-h-[44px]
-              w-11 h-11
-              rounded-full
+              w-12 h-12
+              rounded-sm
               border-2 border-accent
               bg-white
               text-accent
-              font-bold text-lg
-              transition-all duration-200 ease-in-out
-              hover:bg-accent hover:text-white
+              font-black text-xl
+              transition-all duration-300 ease-in-out
+              hover:bg-accent hover:text-white hover:shadow-md
               focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
               focus-visible:ring-4 focus-visible:ring-accent focus-visible:ring-opacity-50
-              ${isActive ? 'bg-accent text-white' : ''}
+              ${isActive ? 'bg-accent text-white shadow-md' : ''}
             `}
           >
             <span className="leading-none" aria-hidden="true">
@@ -160,7 +160,7 @@ export const AnnotationMarker = ({
             aria-labelledby={annotation.title ? `annotation-title-${annotation.id}` : undefined}
             className={`
               annotation-panel-container
-              mt-2
+              mt-3
               transition-all duration-300 ease-in-out
               ${isActive ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}
               overflow-hidden

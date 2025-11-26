@@ -10,37 +10,37 @@ export const AnnotationPanel = ({
   return (
     <div className={`annotation-panel ${
       isMobile 
-        ? 'bg-white border-t border-gray-200 pt-3' 
-        : 'bg-gray-50 border-l-4 border-accent rounded p-4'
+        ? 'bg-white border-t border-border pt-4' 
+        : 'bg-navy-50 border-l-4 border-accent rounded-sm p-5 shadow-sm'
     } transition-all duration-300 ease-in-out overflow-hidden`}>
       {/* Title - Hide on mobile if already shown in button */}
       {title && !isMobile && (
         <h4 
           id={`annotation-title-${annotationId}`}
-          className="text-base sm:text-lg font-semibold text-text mb-2"
+          className="text-base sm:text-lg font-bold text-navy mb-3 tracking-tight"
         >
           {title}
         </h4>
       )}
 
-      {/* Content */}
-      <div className="text-sm sm:text-base text-text-secondary leading-relaxed whitespace-pre-wrap">
+      {/* Content - Professional serif font for readability */}
+      <div className="text-sm sm:text-base text-text-secondary leading-relaxed whitespace-pre-wrap font-serif">
         {content}
       </div>
 
-      {/* Metadata */}
+      {/* Metadata - Clean, structured */}
       {metadata && (
-        <div className={`${isMobile ? 'mt-3 pt-3' : 'mt-3 pt-3'} border-t border-gray-200`}>
-          <div className="flex flex-wrap gap-2 text-xs sm:text-sm text-text-tertiary">
+        <div className={`${isMobile ? 'mt-4 pt-4' : 'mt-4 pt-4'} border-t border-border`}>
+          <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-text-tertiary">
             {metadata.type && (
-              <span className="inline-flex items-center px-2 py-1 bg-gray-100 rounded">
-                <span className="capitalize">{metadata.type}</span>
+              <span className="inline-flex items-center px-3 py-1.5 bg-accent-50 text-accent rounded-sm font-semibold uppercase tracking-wider">
+                {metadata.type}
               </span>
             )}
             {metadata.author && (
-              <span className="inline-flex items-center">
+              <span className="inline-flex items-center font-medium">
                 <svg
-                  className="w-3 h-3 mr-1"
+                  className="w-4 h-4 mr-1.5 text-accent"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -57,9 +57,9 @@ export const AnnotationPanel = ({
               </span>
             )}
             {metadata.source && (
-              <span className="inline-flex items-center">
+              <span className="inline-flex items-center font-medium">
                 <svg
-                  className="w-3 h-3 mr-1"
+                  className="w-4 h-4 mr-1.5 text-accent"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -80,11 +80,11 @@ export const AnnotationPanel = ({
                 href={metadata.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-accent hover:text-accent-dark transition-colors min-h-[44px] items-center"
+                className="inline-flex items-center text-accent hover:text-navy transition-all duration-300 font-semibold min-h-[44px] items-center underline decoration-2 underline-offset-2"
                 aria-label="View source link"
               >
                 <svg
-                  className="w-3 h-3 mr-1"
+                  className="w-4 h-4 mr-1.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

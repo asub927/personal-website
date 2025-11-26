@@ -17,12 +17,12 @@ export const ArticleWithAnnotations = ({
 
   return (
     <div
-      className={`article-with-annotations w-full mx-auto px-4 sm:px-6 lg:px-8 ${className}`}
+      className={`article-with-annotations w-full mx-auto px-6 sm:px-8 lg:px-12 ${className}`}
       style={{ maxWidth: '1400px' }}
     >
       <div
         className={`flex flex-col ${
-          hasAnnotations ? 'md:flex-row md:gap-10 lg:gap-14' : ''
+          hasAnnotations ? 'md:flex-row md:gap-12 lg:gap-16' : ''
         }`}
       >
         {/* Main Content Area (60-70% width on desktop) */}
@@ -31,14 +31,14 @@ export const ArticleWithAnnotations = ({
             hasAnnotations ? 'md:w-[65%]' : 'max-w-[800px] mx-auto'
           }`}
         >
-          <header className="mb-6 md:mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 leading-tight">
+          <header className="mb-10 md:mb-12 pb-8 border-b-2 border-navy">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-5 md:mb-6 leading-tight text-navy tracking-tight">
               {article.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-2 md:gap-4 text-gray-600 text-xs sm:text-sm md:text-base">
-              <span className="font-medium">{article.author}</span>
-              <span>•</span>
-              <time dateTime={article.publishedDate}>
+            <div className="flex flex-wrap items-center gap-3 md:gap-5 text-text-secondary text-sm sm:text-base md:text-base">
+              <span className="font-semibold text-navy">{article.author}</span>
+              <span className="text-accent font-bold">•</span>
+              <time dateTime={article.publishedDate} className="font-light">
                 {new Date(article.publishedDate).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -49,14 +49,14 @@ export const ArticleWithAnnotations = ({
           </header>
 
           <div
-            className="article-body prose prose-sm sm:prose-base md:prose-lg max-w-none"
+            className="article-body prose prose-sm sm:prose-base md:prose-lg max-w-none font-serif text-text leading-relaxed"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
         </article>
 
         {/* Annotation Sidebar (30-40% width on desktop, hidden on mobile < 768px) */}
         {hasAnnotations && (
-          <div className="hidden md:block md:w-[35%] md:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]">
+          <div className="hidden md:block md:w-[35%] md:min-w-[280px] lg:min-w-[320px] xl:min-w-[360px]">
             <AnnotationSidebar
               annotations={annotations}
               activeAnnotationId={activeAnnotationId}
@@ -68,8 +68,8 @@ export const ArticleWithAnnotations = ({
 
       {/* Mobile Inline Annotations (visible only on mobile < 768px) */}
       {hasAnnotations && (
-        <div className="md:hidden mt-8 border-t border-gray-200 pt-6">
-          <h2 className="text-lg font-semibold mb-4 text-gray-900">Annotations</h2>
+        <div className="md:hidden mt-12 border-t-2 border-navy pt-8">
+          <h2 className="text-xl font-black mb-6 text-navy uppercase tracking-wider">Annotations</h2>
           <AnnotationSidebar
             annotations={annotations}
             activeAnnotationId={activeAnnotationId}
