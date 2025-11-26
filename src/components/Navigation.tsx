@@ -27,28 +27,30 @@ const Navigation = ({ currentPath }: NavigationProps) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-md border-b border-border" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo/Brand - Minimum 44px touch target */}
           <Link 
             to="/" 
-            className="text-xl sm:text-xl md:text-2xl font-bold text-text hover:text-text-secondary transition-colors min-h-[44px] flex items-center"
+            className="text-xl sm:text-xl md:text-2xl font-bold text-text hover:text-text-secondary transition-colors min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-md px-2"
+            aria-label="Portfolio home"
           >
             Portfolio
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8">
+          <div className="hidden md:flex space-x-6 lg:space-x-8" role="navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-base font-medium transition-colors min-h-[44px] flex items-center ${
+                className={`text-base font-medium transition-colors min-h-[44px] flex items-center px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
                   isActive(link.path)
                     ? 'text-accent border-b-2 border-accent'
                     : 'text-text-secondary hover:text-text'
                 }`}
+                aria-current={isActive(link.path) ? 'page' : undefined}
               >
                 {link.label}
               </Link>
@@ -83,18 +85,19 @@ const Navigation = ({ currentPath }: NavigationProps) => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-border bg-primary">
+        <div className="md:hidden border-t border-border bg-primary" role="navigation" aria-label="Mobile navigation menu">
           <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={closeMenu}
-                className={`block px-4 py-3 rounded-md text-base font-medium transition-colors min-h-[44px] flex items-center ${
+                className={`block px-4 py-3 rounded-md text-base font-medium transition-colors min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
                   isActive(link.path)
                     ? 'text-accent bg-accent-50'
                     : 'text-text-secondary hover:text-text hover:bg-primary-100'
                 }`}
+                aria-current={isActive(link.path) ? 'page' : undefined}
               >
                 {link.label}
               </Link>

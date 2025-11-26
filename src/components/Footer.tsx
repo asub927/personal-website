@@ -42,7 +42,7 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
   };
 
   return (
-    <footer className="bg-primary-100 border-t border-border">
+    <footer className="bg-primary-100 border-t border-border" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {/* Brand/About Column */}
@@ -54,7 +54,7 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
           </div>
 
           {/* Navigation Links Column */}
-          <div>
+          <nav aria-label="Footer navigation">
             <h3 className="text-base sm:text-base md:text-lg font-semibold text-text uppercase tracking-wider mb-3 sm:mb-4">
               Navigation
             </h3>
@@ -66,14 +66,14 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
                       href={link.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center"
+                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-md px-2"
                     >
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       to={link.path}
-                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center"
+                      className="text-base sm:text-base md:text-lg text-text-secondary hover:text-text transition-colors inline-block min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-md px-2"
                     >
                       {link.label}
                     </Link>
@@ -81,28 +81,28 @@ const Footer = ({ socialLinks, navigationLinks }: FooterProps) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Social Media Column */}
-          <div>
+          <nav aria-label="Social media links">
             <h3 className="text-base sm:text-base md:text-lg font-semibold text-text uppercase tracking-wider mb-3 sm:mb-4">
               Connect
             </h3>
-            <div className="flex flex-wrap gap-3 sm:gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4" role="list">
               {socialLinks.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-text-secondary hover:text-text transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md hover:bg-primary-50"
-                  aria-label={`Visit ${social.platform} profile`}
+                  className="text-text-secondary hover:text-text transition-colors p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  aria-label={`Visit ${social.platform} profile (opens in new tab)`}
                 >
                   {getSocialIcon(social.platform)}
                 </a>
               ))}
             </div>
-          </div>
+          </nav>
         </div>
 
         {/* Copyright */}

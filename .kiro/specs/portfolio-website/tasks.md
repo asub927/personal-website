@@ -108,27 +108,27 @@
   - Display network error handling
   - _Requirements: 2.3_
 
-- [-] 10.2 Add loading states for async operations
+- [x] 10.2 Add loading states for async operations
   - Implement loading spinner for newsletter form submission
   - Add skeleton screens for content loading
   - Create image loading placeholders
   - _Requirements: 3.5_
 
-- [ ] 11. Optimize performance
-- [ ] 11.1 Implement image optimization and lazy loading
+- [x] 11. Optimize performance
+- [x] 11.1 Implement image optimization and lazy loading
   - Add lazy loading to ContentCard images
   - Optimize image formats and sizes
   - Implement fade-in effect for loaded images
   - _Requirements: 3.5_
 
-- [ ] 11.2 Configure build optimization
+- [x] 11.2 Configure build optimization
   - Set up code splitting for routes
   - Enable minification and compression in Vite config
   - Verify production build size and load times
   - _Requirements: 3.5_
 
-- [ ] 12. Enhance accessibility
-- [ ] 12.1 Add semantic HTML and ARIA labels
+- [-] 12. Enhance accessibility
+- [-] 12.1 Add semantic HTML and ARIA labels
   - Use semantic elements (nav, main, footer, article)
   - Add ARIA labels to interactive elements
   - Implement keyboard navigation support
