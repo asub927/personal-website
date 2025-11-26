@@ -63,6 +63,64 @@ export interface FooterProps {
   navigationLinks: NavLink[];
 }
 
+// Annotation System
+
+export interface AnnotationMetadata {
+  author?: string;
+  source?: string;
+  link?: string;
+  type?: 'definition' | 'insight' | 'reference' | 'note';
+}
+
+export interface Annotation {
+  id: string;
+  title?: string;
+  content: string;
+  position: number; // Vertical offset from article top in pixels
+  anchorId?: string; // Optional ID of content element to align with
+  metadata?: AnnotationMetadata;
+}
+
+export interface Article {
+  id: string;
+  title: string;
+  content: string;
+  author: string;
+  publishedDate: string;
+  annotations?: Annotation[];
+}
+
+// Annotation Component Props
+
+export interface AnnotationPanelProps {
+  title?: string;
+  content: string;
+  metadata?: AnnotationMetadata;
+  annotationId?: string;
+  isMobile?: boolean;
+}
+
+export interface AnnotationMarkerProps {
+  annotation: Annotation;
+  isActive: boolean;
+  onToggle: () => void;
+  position: number; // Vertical position in pixels
+  isMobile?: boolean;
+}
+
+export interface AnnotationSidebarProps {
+  annotations: Annotation[];
+  activeAnnotationId: string | null;
+  onToggle: (id: string) => void;
+  isMobile?: boolean;
+}
+
+export interface ArticleWithAnnotationsProps {
+  article: Article;
+  annotations: Annotation[];
+  className?: string;
+}
+
 // Error Handling
 
 export interface FormError {
