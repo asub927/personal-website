@@ -28,9 +28,15 @@ export const Newsletter: React.FC<NewsletterProps> = ({ onSubmit }) => {
       reset();
     } catch (error) {
       setSubmitStatus('error');
-      setErrorMessage(
-        error instanceof Error ? error.message : 'Something went wrong. Please try again.'
-      );
+      
+      // Handle different error types
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        setErrorMessage('Unable to connect. Please check your connection.');
+      } else if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('Something went wrong. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -113,9 +119,21 @@ export const Newsletter: React.FC<NewsletterProps> = ({ onSubmit }) => {
 
           {submitStatus === 'error' && (
             <div className="mt-4 p-4 bg-error-light border border-error rounded-lg">
-              <p className="text-error-dark text-sm sm:text-base">
-                ✗ {errorMessage || 'Something went wrong. Please try again.'}
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p className="text-error-dark text-sm sm:text-base">
+                  ✗ {errorMessage || 'Something went wrong. Please try again.'}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSubmitStatus('idle');
+                    setErrorMessage('');
+                  }}
+                  className="px-4 py-2 text-sm font-medium text-error-dark border border-error rounded-lg hover:bg-error hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 min-h-[44px]"
+                >
+                  Try Again
+                </button>
+              </div>
             </div>
           )}
         </form>

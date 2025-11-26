@@ -63,6 +63,10 @@ const sampleContent: ContentItem[] = [
 ];
 
 const Home: React.FC = () => {
+  // Loading state for content (simulates fetching from API)
+  const [isLoadingContent, setIsLoadingContent] = React.useState(true);
+  const [content, setContent] = React.useState<ContentItem[]>([]);
+
   // Newsletter submission handler
   const handleNewsletterSubmit = async (email: string): Promise<void> => {
     // Simulate API call
@@ -77,6 +81,17 @@ const Home: React.FC = () => {
       }, 1500);
     });
   };
+
+  // Simulate content loading on mount
+  React.useEffect(() => {
+    // Simulate API fetch delay
+    const timer = setTimeout(() => {
+      setContent(sampleContent);
+      setIsLoadingContent(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <main className="scroll-smooth">
@@ -103,7 +118,7 @@ const Home: React.FC = () => {
             </p>
           </div>
           
-          <ContentGrid items={sampleContent} />
+          <ContentGrid items={content} isLoading={isLoadingContent} />
         </div>
       </section>
     </main>

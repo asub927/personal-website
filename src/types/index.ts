@@ -50,6 +50,7 @@ export interface ContentGridProps {
     tablet: number;
     desktop: number;
   };
+  isLoading?: boolean;
 }
 
 export interface ContentCardProps {
