@@ -1,45 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Merriweather:wght@300;400;700&display=swap');
 @import "tailwindcss";
 
-/* Design System - Custom CSS Variables for Tailwind v4 */
+/* McKinsey-Inspired Design System */
 @theme {
-  /* Color Palette - WCAG AA Compliant */
+  /* Color Palette - McKinsey Style */
   --color-primary: #FFFFFF;
-  --color-primary-50: #FAFAFA;
-  --color-primary-100: #F5F5F5;
+  --color-primary-50: #F8F9FA;
+  --color-primary-100: #F1F3F5;
   
-  --color-text: #1a1a1a;  /* 16.1:1 contrast ratio on white */
-  --color-text-secondary: #4b5563;  /* 7.5:1 contrast ratio on white */
-  --color-text-tertiary: #6b7280;  /* 5.7:1 contrast ratio on white */
+  /* McKinsey Navy - Primary brand color */
+  --color-navy: #003366;
+  --color-navy-light: #004080;
+  --color-navy-dark: #002244;
+  --color-navy-50: #E6EBF0;
+  --color-navy-100: #CCE0F0;
   
-  --color-accent: #2563eb;  /* 4.6:1 contrast ratio on white */
-  --color-accent-light: #3b82f6;
-  --color-accent-dark: #1e40af;
-  --color-accent-50: #eff6ff;
-  --color-accent-100: #dbeafe;
-  --color-accent-600: #2563eb;
-  --color-accent-700: #1d4ed8;
+  /* Text colors - Professional hierarchy */
+  --color-text: #1A1A1A;  /* Deep charcoal for primary text */
+  --color-text-secondary: #4A5568;  /* Medium gray for secondary */
+  --color-text-tertiary: #718096;  /* Light gray for tertiary */
+  --color-text-light: #A0AEC0;  /* Very light for subtle text */
   
-  --color-border: #e5e7eb;
-  --color-border-light: #f3f4f6;
-  --color-border-dark: #d1d5db;
+  /* McKinsey Teal - Accent color */
+  --color-accent: #00A3A1;  /* Signature teal */
+  --color-accent-light: #33B8B6;
+  --color-accent-dark: #008785;
+  --color-accent-50: #E6F7F7;
+  --color-accent-100: #B3E8E7;
+  --color-accent-600: #00A3A1;
+  --color-accent-700: #008785;
   
-  --color-success: #059669;  /* 4.5:1 contrast ratio */
-  --color-success-light: #d1fae5;
-  --color-success-dark: #047857;
+  /* Supporting colors */
+  --color-gold: #C9A961;  /* Premium gold accent */
+  --color-gold-light: #D4BA7F;
+  --color-gold-dark: #B89543;
   
-  --color-error: #dc2626;  /* 5.9:1 contrast ratio */
-  --color-error-light: #fee2e2;
-  --color-error-dark: #b91c1c;
+  --color-border: #E2E8F0;
+  --color-border-light: #EDF2F7;
+  --color-border-dark: #CBD5E0;
   
-  /* Typography */
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  --color-success: #00A86B;
+  --color-success-light: #D4F4E2;
+  --color-success-dark: #008556;
   
-  /* Spacing Scale (4px base unit) */
+  --color-error: #C41E3A;
+  --color-error-light: #F8E1E6;
+  --color-error-dark: #9E1830;
+  
+  /* Typography - Professional font stack */
+  --font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-family-serif: 'Merriweather', 'Georgia', 'Times New Roman', serif;
+  
+  /* Spacing Scale (8px base unit for generous whitespace) */
   --spacing-18: 4.5rem;  /* 72px */
   --spacing-22: 5.5rem;  /* 88px */
   --spacing-26: 6.5rem;  /* 104px */
   --spacing-30: 7.5rem;  /* 120px */
+  --spacing-36: 9rem;    /* 144px */
+  --spacing-40: 10rem;   /* 160px */
 }
 
 @layer base {
@@ -52,30 +70,61 @@
   }
   
   body {
-    @apply bg-white text-[#1a1a1a];
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-    line-height: 1.6;
-    font-size: 16px; /* Minimum readable font size */
+    @apply bg-white text-[#1A1A1A];
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+    line-height: 1.7;
+    font-size: 17px; /* Slightly larger for professional readability */
+    font-weight: 400;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-[#1a1a1a];
+    @apply font-bold text-[#003366];
+    font-family: 'Lato', sans-serif;
     line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    font-weight: 700;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+    font-weight: 700;
   }
   
   a {
-    @apply transition-colors duration-200;
+    @apply transition-all duration-300 ease-in-out;
   }
   
   button {
-    @apply transition-all duration-200;
+    @apply transition-all duration-300 ease-in-out;
   }
   
-  /* Focus styles for accessibility */
+  /* Focus styles for accessibility - McKinsey teal */
   *:focus-visible {
-    @apply outline-none ring-2 ring-[#2563eb] ring-offset-2;
+    @apply outline-none ring-2 ring-[#00A3A1] ring-offset-2;
+  }
+  
+  /* Professional paragraph styling */
+  p {
+    @apply text-[#4A5568] leading-relaxed;
+  }
+  
+  /* Serif for article content */
+  .prose {
+    font-family: 'Merriweather', 'Georgia', serif;
   }
 }
 

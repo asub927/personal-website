@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Writing: React.FC = () => {
   return (
@@ -17,12 +18,30 @@ const Writing: React.FC = () => {
             <h2 id="recent-articles" className="text-lg sm:text-xl md:text-2xl font-semibold text-text mb-3 sm:mb-4">
               Recent Articles
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-4">
-              This is a placeholder for your writing section. Share your thoughts on topics you're 
-              passionate about, technical tutorials, or insights from your experience.
-            </p>
+            
+            {/* Sample Article with Annotations */}
+            <article className="mb-6 p-4 sm:p-6 border border-border rounded-lg hover:border-accent transition-colors">
+              <Link to="/writing/sample-article" className="group">
+                <h3 className="text-lg sm:text-xl font-semibold text-text mb-2 group-hover:text-accent transition-colors">
+                  The Future of Digital Transformation: Strategies for Sustainable Growth
+                </h3>
+                <p className="text-sm text-text-tertiary mb-3">
+                  November 15, 2024 • Sarah Mitchell
+                </p>
+                <p className="text-base text-text-secondary leading-relaxed">
+                  In today's rapidly evolving business landscape, digital transformation has become 
+                  more than just a buzzword—it's a critical imperative for organizations seeking to 
+                  remain competitive and relevant. Explore the core pillars of transformation and 
+                  strategies for sustainable growth.
+                </p>
+                <span className="inline-block mt-4 text-accent font-medium group-hover:underline">
+                  Read article →
+                </span>
+              </Link>
+            </article>
+            
             <p className="text-text-tertiary text-base sm:text-base md:text-lg">
-              Articles will be displayed here with titles, excerpts, and publication dates.
+              More articles will be displayed here with titles, excerpts, and publication dates.
             </p>
           </section>
           

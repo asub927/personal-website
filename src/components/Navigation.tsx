@@ -27,28 +27,28 @@ const Navigation = ({ currentPath }: NavigationProps) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-md border-b border-border" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo/Brand - Minimum 44px touch target */}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm" aria-label="Main navigation">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex justify-between items-center h-20 md:h-24">
+          {/* Logo/Brand - McKinsey style */}
           <Link 
             to="/" 
-            className="text-xl sm:text-xl md:text-2xl font-bold text-text hover:text-text-secondary transition-colors min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-md px-2"
+            className="text-2xl sm:text-2xl md:text-3xl font-black text-navy tracking-tight hover:text-accent transition-all duration-300 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2"
             aria-label="Portfolio home"
           >
-            Portfolio
+            PORTFOLIO
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8" role="navigation">
+          {/* Desktop Navigation - Clean, minimal */}
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-2" role="navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-base font-medium transition-colors min-h-[44px] flex items-center px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+                className={`text-sm lg:text-base font-semibold uppercase tracking-wider transition-all duration-300 min-h-[44px] flex items-center px-4 lg:px-5 py-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
                   isActive(link.path)
-                    ? 'text-accent border-b-2 border-accent'
-                    : 'text-text-secondary hover:text-text'
+                    ? 'text-white bg-navy shadow-md'
+                    : 'text-navy hover:text-accent hover:bg-navy-50'
                 }`}
                 aria-current={isActive(link.path) ? 'page' : undefined}
               >
@@ -57,19 +57,19 @@ const Navigation = ({ currentPath }: NavigationProps) => {
             ))}
           </div>
 
-          {/* Mobile Menu Button - Minimum 44px touch target */}
+          {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-3 rounded-md text-text-secondary hover:text-text hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-accent min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="md:hidden p-3 rounded-sm text-navy hover:text-accent hover:bg-navy-50 focus:outline-none focus:ring-2 focus:ring-accent min-w-[44px] min-h-[44px] flex items-center justify-center transition-all duration-300"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
             <svg
-              className="h-6 w-6"
+              className="h-7 w-7"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth="2"
+              strokeWidth="2.5"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
@@ -83,19 +83,19 @@ const Navigation = ({ currentPath }: NavigationProps) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Professional dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-border bg-primary" role="navigation" aria-label="Mobile navigation menu">
-          <div className="px-4 py-3 space-y-1">
+        <div className="md:hidden border-t border-border bg-white shadow-lg" role="navigation" aria-label="Mobile navigation menu">
+          <div className="px-6 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={closeMenu}
-                className={`block px-4 py-3 rounded-md text-base font-medium transition-colors min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+                className={`block px-5 py-4 rounded-sm text-base font-semibold uppercase tracking-wider transition-all duration-300 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
                   isActive(link.path)
-                    ? 'text-accent bg-accent-50'
-                    : 'text-text-secondary hover:text-text hover:bg-primary-100'
+                    ? 'text-white bg-navy shadow-md'
+                    : 'text-navy hover:text-accent hover:bg-navy-50'
                 }`}
                 aria-current={isActive(link.path) ? 'page' : undefined}
               >

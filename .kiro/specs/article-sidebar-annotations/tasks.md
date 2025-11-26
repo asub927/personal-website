@@ -71,14 +71,14 @@
   - Use ArticleWithAnnotations component to render the article with sidebar
   - _Requirements: 1.1, 4.1, 4.5, 4.6_
 
-- [ ] 10. Integrate article detail page into application
+- [x] 10. Integrate article detail page into application
   - Add route for /writing/:articleId in App.tsx to display ArticleDetail page
   - Update Writing.tsx to include a clickable link to sample article (e.g., /writing/sample-article)
   - Ensure lazy loading is applied to ArticleDetail page for code splitting
   - _Requirements: 1.1, 4.1_
 
 - [x] 11. Write component tests
-  - [-] 11.1 Test AnnotationMarker toggle behavior and verify only one annotation open at a time
+  - [x] 11.1 Test AnnotationMarker toggle behavior and verify only one annotation open at a time
   - [x] 11.2 Test keyboard event handlers (Enter, Space, Tab, Escape navigation)
   - [x] 11.3 Test ARIA attribute updates when annotation state changes
   - [x] 11.4 Test responsive layout switching at 768px breakpoint

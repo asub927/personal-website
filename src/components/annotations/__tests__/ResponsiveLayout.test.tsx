@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ArticleWithAnnotations } from '../ArticleWithAnnotations';
 import { Article, Annotation } from '../../../types';
@@ -85,6 +85,63 @@ describe('Responsive Layout', () => {
 
       const sidebar = container.querySelector('.annotation-sidebar.sticky');
       expect(sidebar).toBeInTheDocument();
+    });
+  });
+
+  describe('Breakpoint switching at 768px', () => {
+    it('should switch from desktop to mobile layout at 768px breakpoint', () => {
+      const { container } = render(
+        <ArticleWithAnnotations
+          article={mockArticle}
+          annotations={mockAnnotations}
+        />
+      );
+
+      // Desktop sidebar should be visible (has hidden md:block classes)
+      const desktopSidebar = container.querySelector('.hidden.md\\:block');
+      expect(desktopSidebar).toBeInTheDocument();
+
+      // Mobile section should be hidden on desktop (has md:hidden class)
+      const mobileSection = container.querySelector('.md\\:hidden');
+      expect(mobileSection).toBeInTheDocument();
+    });
+
+    it('should apply flex-row layout on desktop and flex-col on mobile', () => {
+      const { container } = render(
+        <ArticleWithAnnotations
+          article={mockArticle}
+          annotations={mockAnnotations}
+        />
+      );
+
+      const flexContainer = container.querySelector('.flex');
+      expect(flexContainer).toHaveClass('flex-col');
+      expect(flexContainer).toHaveClass('md:flex-row');
+    });
+
+    it('should adjust content width at 768px breakpoint', () => {
+      const { container } = render(
+        <ArticleWithAnnotations
+          article={mockArticle}
+          annotations={mockAnnotations}
+        />
+      );
+
+      const articleContent = container.querySelector('.article-content');
+      expect(articleContent).toHaveClass('md:w-[65%]');
+    });
+
+    it('should show sidebar with proper width classes at 768px+', () => {
+      const { container } = render(
+        <ArticleWithAnnotations
+          article={mockArticle}
+          annotations={mockAnnotations}
+        />
+      );
+
+      const sidebarContainer = container.querySelector('.md\\:w-\\[35\\%\\]');
+      expect(sidebarContainer).toBeInTheDocument();
+      expect(sidebarContainer).toHaveClass('md:min-w-[250px]');
     });
   });
 

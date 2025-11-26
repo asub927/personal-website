@@ -19,45 +19,61 @@ export default {
         // Primary colors
         primary: {
           DEFAULT: '#FFFFFF',
-          50: '#FAFAFA',
-          100: '#F5F5F5',
+          50: '#F8F9FA',
+          100: '#F1F3F5',
         },
-        // Text colors with WCAG AA compliant contrast ratios
+        // McKinsey Navy
+        navy: {
+          DEFAULT: '#003366',
+          light: '#004080',
+          dark: '#002244',
+          50: '#E6EBF0',
+          100: '#CCE0F0',
+        },
+        // Text colors - Professional hierarchy
         text: {
-          DEFAULT: '#1a1a1a',  // 16.1:1 contrast ratio on white
-          secondary: '#4b5563', // 7.5:1 contrast ratio on white
-          tertiary: '#6b7280',  // 5.7:1 contrast ratio on white
+          DEFAULT: '#1A1A1A',
+          secondary: '#4A5568',
+          tertiary: '#718096',
+          light: '#A0AEC0',
         },
-        // Accent colors
+        // McKinsey Teal - Accent
         accent: {
-          DEFAULT: '#2563eb',  // 4.6:1 contrast ratio on white
-          light: '#3b82f6',
-          dark: '#1e40af',
-          50: '#eff6ff',
-          100: '#dbeafe',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          DEFAULT: '#00A3A1',
+          light: '#33B8B6',
+          dark: '#008785',
+          50: '#E6F7F7',
+          100: '#B3E8E7',
+          600: '#00A3A1',
+          700: '#008785',
+        },
+        // Gold accent
+        gold: {
+          DEFAULT: '#C9A961',
+          light: '#D4BA7F',
+          dark: '#B89543',
         },
         // Border colors
         border: {
-          DEFAULT: '#e5e7eb',
-          light: '#f3f4f6',
-          dark: '#d1d5db',
+          DEFAULT: '#E2E8F0',
+          light: '#EDF2F7',
+          dark: '#CBD5E0',
         },
-        // Semantic colors with proper contrast
+        // Semantic colors
         success: {
-          DEFAULT: '#059669',  // 4.5:1 contrast ratio
-          light: '#d1fae5',
-          dark: '#047857',
+          DEFAULT: '#00A86B',
+          light: '#D4F4E2',
+          dark: '#008556',
         },
         error: {
-          DEFAULT: '#dc2626',  // 5.9:1 contrast ratio
-          light: '#fee2e2',
-          dark: '#b91c1c',
+          DEFAULT: '#C41E3A',
+          light: '#F8E1E6',
+          dark: '#9E1830',
         },
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Lato', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        serif: ['Merriweather', 'Georgia', 'Times New Roman', 'serif'],
       },
       fontSize: {
         // Ensure minimum 16px base size for readability

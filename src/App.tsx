@@ -9,6 +9,7 @@ const About = lazy(() => import('./pages/About'))
 const Work = lazy(() => import('./pages/Work'))
 const Writing = lazy(() => import('./pages/Writing'))
 const Contact = lazy(() => import('./pages/Contact'))
+const ArticleDetail = lazy(() => import('./pages/ArticleDetail'))
 
 function App() {
   const location = useLocation()
@@ -49,6 +50,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/work" element={<Work />} />
             <Route path="/writing" element={<Writing />} />
+            <Route path="/writing/:articleId" element={<ArticleDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </Suspense>

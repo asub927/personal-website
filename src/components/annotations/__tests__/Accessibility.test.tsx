@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { AnnotationMarker } from '../AnnotationMarker';
 import { AnnotationSidebar } from '../AnnotationSidebar';
 import { Annotation } from '../../../types';
@@ -245,6 +244,288 @@ describe('Accessibility - ARIA Attributes', () => {
       expect(button).toHaveClass('focus:outline-none');
       expect(button).toHaveClass('focus:ring-2');
       expect(button).toHaveClass('focus:ring-accent');
+    });
+  });
+
+  describe('ARIA attribute updates on state change', () => {
+    it('should update aria-expanded when toggling from collapsed to expanded', async () => {
+      const onToggle = vi.fn();
+
+      const { rerender } = render(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      const button = screen.getByRole('button');
+      
+      // Initially collapsed
+      expect(button).toHaveAttribute('aria-expanded', 'false');
+      expect(button).toHaveAttribute('aria-label', 'Expand annotation: Test Annotation');
+
+      // Simulate state change to expanded
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={true}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // Should update to expanded
+      expect(button).toHaveAttribute('aria-expanded', 'true');
+      expect(button).toHaveAttribute('aria-label', 'Collapse annotation: Test Annotation');
+    });
+
+    it('should update aria-expanded when toggling from expanded to collapsed', async () => {
+      const onToggle = vi.fn();
+
+      const { rerender } = render(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={true}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      const button = screen.getByRole('button');
+      
+      // Initially expanded
+      expect(button).toHaveAttribute('aria-expanded', 'true');
+      expect(button).toHaveAttribute('aria-label', 'Collapse annotation: Test Annotation');
+
+      // Simulate state change to collapsed
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // Should update to collapsed
+      expect(button).toHaveAttribute('aria-expanded', 'false');
+      expect(button).toHaveAttribute('aria-label', 'Expand annotation: Test Annotation');
+    });
+
+    it('should update aria-label dynamically when state changes', async () => {
+      const onToggle = vi.fn();
+
+      const { rerender } = render(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      const button = screen.getByRole('button');
+      
+      // Check initial aria-label
+      expect(button).toHaveAttribute('aria-label', 'Expand annotation: Test Annotation');
+
+      // Toggle to expanded
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={true}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // aria-label should update
+      expect(button).toHaveAttribute('aria-label', 'Collapse annotation: Test Annotation');
+
+      // Toggle back to collapsed
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // aria-label should update again
+      expect(button).toHaveAttribute('aria-label', 'Expand annotation: Test Annotation');
+    });
+
+    it('should maintain aria-controls attribute across state changes', async () => {
+      const onToggle = vi.fn();
+
+      const { rerender } = render(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      const button = screen.getByRole('button');
+      const expectedPanelId = 'annotation-panel-test-1';
+      
+      // Check initial aria-controls
+      expect(button).toHaveAttribute('aria-controls', expectedPanelId);
+
+      // Toggle to expanded
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={true}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // aria-controls should remain the same
+      expect(button).toHaveAttribute('aria-controls', expectedPanelId);
+
+      // Toggle back to collapsed
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // aria-controls should still be the same
+      expect(button).toHaveAttribute('aria-controls', expectedPanelId);
+    });
+
+    it('should show/hide panel region based on state', async () => {
+      const onToggle = vi.fn();
+
+      const { rerender } = render(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // Panel should be in DOM but with max-h-0 when collapsed
+      const panelCollapsed = screen.getByRole('region');
+      expect(panelCollapsed).toBeInTheDocument();
+      expect(panelCollapsed).toHaveClass('max-h-0');
+      expect(panelCollapsed).toHaveClass('opacity-0');
+
+      // Toggle to expanded
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={true}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // Panel should be visible when expanded
+      const panelExpanded = screen.getByRole('region');
+      expect(panelExpanded).toBeInTheDocument();
+      expect(panelExpanded).toHaveAttribute('id', 'annotation-panel-test-1');
+      expect(panelExpanded).not.toHaveClass('max-h-0');
+      expect(panelExpanded).toHaveClass('opacity-100');
+
+      // Toggle back to collapsed
+      rerender(
+        <AnnotationMarker
+          annotation={mockAnnotation}
+          isActive={false}
+          onToggle={onToggle}
+          position={100}
+        />
+      );
+
+      // Panel should be collapsed again
+      const panelCollapsedAgain = screen.getByRole('region');
+      expect(panelCollapsedAgain).toHaveClass('max-h-0');
+      expect(panelCollapsedAgain).toHaveClass('opacity-0');
+    });
+
+    it('should update aria-live announcements when sidebar state changes', async () => {
+      const mockAnnotations: Annotation[] = [
+        {
+          id: 'annotation-1',
+          title: 'First Annotation',
+          content: 'First content',
+          position: 100,
+        },
+        {
+          id: 'annotation-2',
+          title: 'Second Annotation',
+          content: 'Second content',
+          position: 300,
+        },
+      ];
+
+      const onToggle = vi.fn();
+
+      const { rerender } = render(
+        <AnnotationSidebar
+          annotations={mockAnnotations}
+          activeAnnotationId={null}
+          onToggle={onToggle}
+        />
+      );
+
+      const liveRegion = screen.getByRole('status');
+      
+      // Initially empty
+      expect(liveRegion).toHaveTextContent('');
+
+      // Expand first annotation
+      rerender(
+        <AnnotationSidebar
+          annotations={mockAnnotations}
+          activeAnnotationId="annotation-1"
+          onToggle={onToggle}
+        />
+      );
+
+      // Should announce expansion
+      await waitFor(() => {
+        expect(liveRegion).toHaveTextContent('Annotation expanded: First Annotation');
+      });
+
+      // Switch to second annotation
+      rerender(
+        <AnnotationSidebar
+          annotations={mockAnnotations}
+          activeAnnotationId="annotation-2"
+          onToggle={onToggle}
+        />
+      );
+
+      // Should announce new expansion
+      await waitFor(() => {
+        expect(liveRegion).toHaveTextContent('Annotation expanded: Second Annotation');
+      });
+
+      // Collapse all
+      rerender(
+        <AnnotationSidebar
+          annotations={mockAnnotations}
+          activeAnnotationId={null}
+          onToggle={onToggle}
+        />
+      );
+
+      // Should announce collapse
+      await waitFor(() => {
+        expect(liveRegion).toHaveTextContent('Annotation collapsed');
+      });
     });
   });
 });
