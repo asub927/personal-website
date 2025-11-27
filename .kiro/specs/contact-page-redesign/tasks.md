@@ -72,7 +72,7 @@
     - Wire up handler to ContactForm component
     - _Requirements: 2.2, 2.4, 2.5_
 
-  - [x] 4.3 Apply responsive design
+  - [-] 4.3 Apply responsive design
     - Implement mobile, tablet, and desktop breakpoints
     - Ensure vertical stacking on mobile with appropriate spacing
     - Apply responsive typography scaling from design system
@@ -87,8 +87,8 @@
     - Add proper heading hierarchy and landmark regions
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [-] 5. Write component tests
-  - [ ] 5.1 Test ContactForm validation
+- [x] 5. Write component tests
+  - [x] 5.1 Test ContactForm validation
     - Write unit tests for required field validation
     - Test email format validation
     - Test minimum length validation
@@ -102,20 +102,20 @@
     - Test form reset after successful submission
     - _Requirements: 2.4, 2.5, 3.2, 3.5_
 
-  - [ ] 5.3 Test ContactInfo rendering
+  - [x] 5.3 Test ContactInfo rendering
     - Test email link generation
     - Test social media links rendering
     - Test location display
     - _Requirements: 1.1, 1.2, 1.3_
 
-  - [ ] 5.4 Test accessibility features
+  - [x] 5.4 Test accessibility features
     - Test keyboard navigation through form
     - Test screen reader announcements for errors and success
     - Test ARIA attributes on form fields
     - Test focus indicators visibility
     - _Requirements: 5.1, 5.2, 5.4, 5.5_
 
-  - [ ] 5.5 Test responsive behavior
+  - [x] 5.5 Test responsive behavior
     - Test layout at mobile breakpoints (320px, 375px, 414px)
     - Test layout at tablet breakpoints (768px, 1024px)
     - Test layout at desktop breakpoints (1280px, 1440px)
