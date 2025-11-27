@@ -72,7 +72,7 @@
     - Wire up handler to ContactForm component
     - _Requirements: 2.2, 2.4, 2.5_
 
-  - [-] 4.3 Apply responsive design
+  - [x] 4.3 Apply responsive design
     - Implement mobile, tablet, and desktop breakpoints
     - Ensure vertical stacking on mobile with appropriate spacing
     - Apply responsive typography scaling from design system
@@ -95,7 +95,7 @@
     - Test error message display
     - _Requirements: 2.2, 2.3_
 
-  - [ ] 5.2 Test form submission flow
+  - [x] 5.2 Test form submission flow
     - Test successful submission with success message display
     - Test failed submission with error message display
     - Test loading state during submission
@@ -108,7 +108,7 @@
     - Test location display
     - _Requirements: 1.1, 1.2, 1.3_
 
-  - [x] 5.4 Test accessibility features
+  - [-] 5.4 Test accessibility features
     - Test keyboard navigation through form
     - Test screen reader announcements for errors and success
     - Test ARIA attributes on form fields

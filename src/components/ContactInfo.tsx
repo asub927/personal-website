@@ -56,7 +56,7 @@ export const ContactInfo: React.FC = () => {
         </h3>
         <a
           href={`mailto:${contactInfo.email}`}
-          className="text-accent hover:text-accent-dark text-sm sm:text-base md:text-[16px] font-medium transition-all duration-300 hover:underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm inline-block break-all"
+          className="text-accent hover:text-accent-dark text-sm sm:text-base md:text-[16px] font-medium transition-all duration-300 hover:underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm inline-block break-all py-2"
           aria-label={`Send email to ${contactInfo.email}`}
         >
           {contactInfo.email}
