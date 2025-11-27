@@ -43,6 +43,17 @@ export interface NewsletterFormData {
   email: string;
 }
 
+export interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export interface ContactFormProps {
+  onSubmit: (data: ContactFormData) => Promise<void>;
+}
+
 export interface ContentGridProps {
   items: ContentItem[];
   columns?: {
