@@ -79,7 +79,7 @@
     - Test layout at all breakpoint sizes
     - _Requirements: 4.1, 4.2, 4.4, 4.5_
 
-  - [ ] 4.4 Ensure accessibility compliance
+  - [x] 4.4 Ensure accessibility compliance
     - Add proper ARIA labels and semantic HTML structure
     - Verify keyboard navigation through all elements
     - Test color contrast ratios meet WCAG AA standards
@@ -87,7 +87,7 @@
     - Add proper heading hierarchy and landmark regions
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ] 5. Write component tests
+- [-] 5. Write component tests
   - [ ] 5.1 Test ContactForm validation
     - Write unit tests for required field validation
     - Test email format validation

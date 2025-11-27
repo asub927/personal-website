@@ -200,13 +200,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
       {/* Error Message */}
       {submitStatus === 'error' && (
         <div 
+          id="form-error-message"
           className="mb-5 sm:mb-6 p-3 sm:p-4 bg-error-light border-2 border-error rounded-sm" 
           role="alert" 
           aria-live="assertive"
+          aria-atomic="true"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p className="text-error-dark text-sm sm:text-base md:text-[16px] flex items-center">
-              <span className="mr-2 text-base sm:text-lg flex-shrink-0">✗</span>
+              <span className="mr-2 text-base sm:text-lg flex-shrink-0" aria-hidden="true">✗</span>
               <span>{errorMessage || 'Something went wrong. Please try again.'}</span>
             </p>
             <button
@@ -216,7 +218,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                 setErrorMessage('');
               }}
               className="px-4 py-2 text-xs sm:text-sm font-bold text-error-dark border-2 border-error rounded-sm hover:bg-error hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 min-h-[44px] whitespace-nowrap flex-shrink-0"
-              aria-label="Dismiss error and try again"
+              aria-label="Dismiss error message and try submitting again"
             >
               Try Again
             </button>
@@ -229,6 +231,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
         type="submit"
         disabled={isLoading}
         className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-accent text-white font-bold text-sm sm:text-base md:text-[16px] rounded-sm hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 min-h-[44px] shadow-sm hover:shadow-md"
+        aria-label={isLoading ? 'Sending message, please wait' : 'Send message'}
       >
         {isLoading ? (
           <span className="flex items-center justify-center">
@@ -238,6 +241,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
               fill="none"
               viewBox="0 0 24 24"
               aria-hidden="true"
+              role="img"
+              aria-label="Loading spinner"
             >
               <circle
                 className="opacity-25"
@@ -253,7 +258,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            Sending...
+            <span>Sending...</span>
           </span>
         ) : (
           'Send Message'
